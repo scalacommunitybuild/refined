@@ -60,7 +60,17 @@ object string {
   /** A `String` that is not empty. */
   type NonEmptyString = String Refined NonEmpty
 
-  object NonEmptyString extends RefinedTypeOps[NonEmptyString, String]
+  object NonEmptyString extends RefinedTypeOps[NonEmptyString, String] {
+    trait Syntax {
+      implicit class Ops(nes: NonEmptyString) {
+        def concatS(str: String): NonEmptyString =
+          Refined.unsafeApply(nes.value.concat(str))
+
+        def concatNes(str: NonEmptyString): NonEmptyString =
+          Refined.unsafeApply(nes.value.concat(str.value))
+      }
+    }
+  }
 
   /** A `String` that contains no leading or trailing whitespace. */
   type TrimmedString = String Refined Trimmed

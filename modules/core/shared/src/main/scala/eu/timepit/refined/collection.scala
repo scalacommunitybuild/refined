@@ -7,6 +7,7 @@ import eu.timepit.refined.collection._
 import eu.timepit.refined.generic.Equal
 import eu.timepit.refined.internal.Resources
 import eu.timepit.refined.numeric.{GreaterEqual, Interval}
+import eu.timepit.refined.types.string.NonEmptyString
 import shapeless.Witness
 import shapeless.nat._0
 
@@ -121,7 +122,7 @@ object collection extends CollectionInference {
       }
   }
 
-  object Empty {
+  object Empty extends NonEmptyString.Syntax {
     implicit def emptyValidate[T](implicit ev: T => Traversable[_]): Validate.Plain[T, Empty] =
       Validate.fromPredicate(_.isEmpty, t => s"isEmpty($t)", Empty())
   }
