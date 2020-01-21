@@ -56,14 +56,14 @@ class RefineSyntaxSpec extends Properties("refine syntax") {
 
   property("refineMV failure") = wellTyped {
     illTyped("testRefineMV(-1)", "Predicate.*fail.*")
-    illTyped("testRefineMV(refineMV(-1))", "could not find implicit value.*")
+    illTyped("testRefineMV(refineMV(-1))", "Predicate.*fail.*")
     illTyped("testRefineMV(refineMV[Positive](-1))", "Predicate.*fail.*")
     illTyped("testRefineMV(refineMV[Positive][Int](-1))", "Predicate.*fail.*")
   }
 
   property("refineMT failure") = wellTyped {
     illTyped("testRefineMT(-1)", "Predicate.*fail.*")
-    illTyped("testRefineMT(refineMT(-1))", "could not find implicit value.*")
+    illTyped("testRefineMT(refineMT(-1))", "Predicate.*fail.*")
     illTyped("testRefineMT(refineMT[Positive](-1))", "Predicate.*fail.*")
     illTyped("testRefineMT(refineMT[Positive][Int](-1))", "Predicate.*fail.*")
   }
