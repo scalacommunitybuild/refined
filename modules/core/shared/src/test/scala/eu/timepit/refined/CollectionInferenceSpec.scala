@@ -35,7 +35,7 @@ class CollectionInferenceSpec extends Properties("CollectionInference") {
   property("Exists[A] =!> Head[A]") = wellTyped {
     illTyped(
       "Inference[Exists[Digit], Head[Digit]]",
-      "diverging implicit expansion for.*Inference.*"
+      "could not find.*Inference.*"
     )
   }
 
