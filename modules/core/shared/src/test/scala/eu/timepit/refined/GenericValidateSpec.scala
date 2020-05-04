@@ -34,7 +34,7 @@ class GenericValidateSpec extends Properties("GenericValidate") {
   }
 
   property("Equal.Symbol.showExpr") = secure {
-    showExpr[Equal[W.`'foo`.T]](Symbol("bar")) ?= "('bar == 'foo)"
+    showExpr[Equal[W.`'foo`.T]](Symbol("bar")) ?= "(Symbol(bar) == Symbol(foo))"
   }
 
   property("Equal.Nat.Int.isValid") = forAll { (i: Int) =>
